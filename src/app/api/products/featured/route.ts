@@ -1,7 +1,9 @@
-import { products } from '../data.json'
+import data from '../data.json'
 
 export async function GET() {
-  const featuredProduct = products.filter((product) => product.featured)
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  const featuredProduct = data.products.filter((product) => product.featured)
 
   return Response.json(featuredProduct)
 }
