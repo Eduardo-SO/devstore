@@ -1,7 +1,9 @@
+import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CartWidget } from './cart-widget'
 import { SearchForm } from './search-form'
+import { Skeleton } from './skeleton'
 
 export function Header() {
   return (
@@ -11,7 +13,9 @@ export function Header() {
           Devstore
         </Link>
 
-        <SearchForm />
+        <Suspense fallback={<Skeleton className="w-80 h-11" />}>
+          <SearchForm />
+        </Suspense>
       </div>
       <div className="flex items-center gap-4">
         <CartWidget />
