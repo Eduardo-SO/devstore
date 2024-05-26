@@ -1,3 +1,24 @@
+'use client'
+
+import { Skeleton } from '@/components/skeleton'
+import { useSearchParams } from 'next/navigation'
+
 export default function SearchLoading() {
-  return <h1>Carregando</h1>
+  const searchParams = useSearchParams()
+
+  const query = searchParams.get('q')
+
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-sm">
+        Resultados para: <span className="font-semibold">{query}</span>
+      </p>
+
+      <div className="grid grid-cols-3 gap-6">
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <Skeleton key={item} className="h-[480px]" />
+        ))}
+      </div>
+    </div>
+  )
 }
